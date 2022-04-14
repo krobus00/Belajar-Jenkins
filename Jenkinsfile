@@ -17,6 +17,7 @@ pipeline {
           SECRET = credentials('c-sample-secret')
       }
       steps {
+        sh 'echo $USER'
         sh 'cp $SECRET $WORKSPACE'
         sh "ls -a"
         sh "cat .env"
