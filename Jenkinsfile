@@ -17,7 +17,7 @@ pipeline {
           SECRET = credentials('c-sample-secret')
       }
       steps {
-        sh 'cp $SECRET $WORKSPACE'
+        sh 'cp -rp $SECRET $WORKSPACE'
         sh 'docker compose up --build -d --no-color --wait'
         sh 'docker compose ps'
       }
