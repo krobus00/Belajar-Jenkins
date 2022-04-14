@@ -17,7 +17,7 @@ pipeline {
           SECRET = credentials('c-sample-secret')
       }
       steps {
-        sh "cp \$SECRET .env"
+        sh "echo \$SECRET >> .env"
         sh "ls -a"
         sh "cat .env"
         sh 'docker compose up --build -d --no-color --wait'
