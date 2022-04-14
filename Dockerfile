@@ -6,7 +6,9 @@ ENV GO111MODULE=on CGO_ENABLED=0
 COPY go.mod go.sum /builder/
 RUN go mod download
 COPY . .
-RUN go build -o /builder/main /builder/cmd/app/main.go
+RUN go build \
+  -ldflags "-s -w" \
+  -o /builder/main /builder/cmd/app/main.go
 RUN upx -9 /builder/main
 
 # runner image
