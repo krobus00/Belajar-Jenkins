@@ -15,5 +15,6 @@ RUN upx -9 /builder/main
 FROM alpine:3.8
 WORKDIR /app
 COPY --from=base /builder/main main
+COPY --from=base /builder/.env .env
 EXPOSE 8901
 CMD ["/app/main"]
