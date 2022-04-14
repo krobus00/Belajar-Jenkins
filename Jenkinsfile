@@ -19,6 +19,7 @@ pipeline {
       steps {
         sh "cp \$SECRET .env"
         sh "ls -a"
+        sh "cat .env"
         sh 'docker compose up --build -d --no-color --wait'
         sh 'docker compose ps'
       }
