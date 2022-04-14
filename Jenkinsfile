@@ -13,7 +13,12 @@ pipeline {
       }
     }
     stage('start container') {
+      environment {
+          SECRET = credentials('c-sample-secret')
+      }
       steps {
+        sh "cp \$SECRET .env"
+        sh "ls -a"
         sh 'docker compose up --build -d --no-color --wait'
         sh 'docker compose ps'
       }
