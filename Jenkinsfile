@@ -17,14 +17,14 @@ pipeline {
           SECRET = credentials('c-sample-secret')
       }
       steps {
-        sh 'cp -rp $SECRET $WORKSPACE'
+        sh 'cp -p $SECRET $WORKSPACE'
         sh 'docker compose up --build -d --no-color --wait'
         sh 'docker compose ps'
       }
     }
     stage("docker image clean up") {
       steps {
-        sh 'docker image prune -a -f'
+        sh 'docker image prune -f'
       }
     }
   }
